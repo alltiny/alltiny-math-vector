@@ -184,7 +184,11 @@ public class Vector {
 
     @Override
     public int hashCode() {
-        return Arrays.hashCode(values);
+        int hash = 0;
+        for (double value : values) {
+            hash = 31 * hash + (int)Double.doubleToLongBits(value == 0.0 ? 0 : value); // treat -0.0 and 0.0 as 0
+        }
+        return hash;
     }
 
     @Override

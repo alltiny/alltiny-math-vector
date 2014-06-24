@@ -64,5 +64,6 @@ public class VectorTest {
     @Test
     public void testEquals() {
         Assert.assertEquals("both vectors should be equal", new Vector(0.0), new Vector(-0.0));
+        Assert.assertEquals("equal vectors should have the same hash", new Vector(0.0).hashCode(), new Vector(-0.0).hashCode());
     }
 }
