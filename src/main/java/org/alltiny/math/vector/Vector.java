@@ -162,19 +162,24 @@ public class Vector {
         );
     }
 
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof Vector)) {
-            return false;
+        if (o instanceof Vector) {
+            Vector v = (Vector)o;
+            // compare the array of values; note that Arrays.equals can't do it, because it handles "-0" versus "0" wrong.
+            if (values.length == v.values.length) {
+                for (int i = 0; i < values.length; i++) {
+                    if (values[i] != v.values[i]) {
+                        return false;
+                    }
+                }
+                return true;
+            }
         }
-
-        Vector vector = (Vector)o;
-        return Arrays.equals(values, vector.values);
+        return false;
     }
 
     @Override

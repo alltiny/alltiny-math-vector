@@ -60,4 +60,9 @@ public class VectorTest {
         Assert.assertEquals(-2, x.get(1), 0.000001);
         Assert.assertEquals(0, x.get(2), 0.000001);
     }
+
+    @Test
+    public void testEquals() {
+        Assert.assertEquals("both vectors should be equal", new Vector(0.0), new Vector(-0.0));
+    }
 }
