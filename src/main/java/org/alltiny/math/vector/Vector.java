@@ -66,6 +66,7 @@ public class Vector {
 
     /**
      * @return a vector pointing into the same direction like this vector but with length of 1 (called normalized vector)
+     * @since 1.0
      */
     public Vector normalize() {
         final double length = getLength();
@@ -82,6 +83,7 @@ public class Vector {
      * @param other to add
      * @return added vector of this vector and the given vector
      * @throws IllegalDimensionException if this and the given vector have unequal dimensions.
+     * @since 1.0
      */
     public Vector add(Vector other) {
         if (getDimension() != other.getDimension()) {
@@ -100,6 +102,7 @@ public class Vector {
      * @param other to sub from this one
      * @return subtracted vector
      * @throws IllegalDimensionException if this and the given vector have unequal dimensions.
+     * @since 1.0
      */
     public Vector sub(Vector other) {
         if (getDimension() != other.getDimension()) {
@@ -114,10 +117,27 @@ public class Vector {
 
     /**
      * Multiplies this vector with the given scalar.
-     * @param scalar the multiply this vector with.
+     * @param scalar to multiply this vector with.
      * @return the scaled vector
+     * @see #scale(double)
+     * @since 1.0
      */
     public Vector mul(double scalar) {
+        Vector vector = new Vector(getDimension());
+        for (int i = 0; i < getDimension(); i++) {
+            vector.set(i, values[i] * scalar);
+        }
+        return vector;
+    }
+
+    /**
+     * Scales this vector with the given scalar.
+     * @param scalar to multiply this vector with.
+     * @return the scaled vector
+     * @see #mul(double)
+     * @since 1.1
+     */
+    public Vector scale(double scalar) {
         Vector vector = new Vector(getDimension());
         for (int i = 0; i < getDimension(); i++) {
             vector.set(i, values[i] * scalar);
@@ -130,6 +150,7 @@ public class Vector {
      * @param vector to create the scalar product with
      * @return scalar product of this vector and the given vector
      * @throws IllegalDimensionException if this and the given vector have unequal dimensions.
+     * @since 1.0
      */
     public double scalar(Vector vector) {
         if (getDimension() != vector.getDimension()) {
@@ -150,6 +171,7 @@ public class Vector {
      * @param vector to create the cross product with
      * @return scalar product of this vector and the given vector
      * @throws IllegalDimensionException if this or the given vector has another dimension than 3.
+     * @since 1.0
      */
     public Vector cross(Vector vector) {
         if (getDimension() != 3 || vector.getDimension() != 3) {
@@ -160,6 +182,26 @@ public class Vector {
             get(2) * vector.get(0) - get(0) * vector.get(2),
             get(0) * vector.get(1) - get(1) * vector.get(0)
         );
+    }
+
+    /**
+     * This method projects the other vector onto this vector.
+     * @return projection of the other vector onto this vector.
+     * @since 1.1
+     */
+    public Vector project(Vector other) {
+        Vector normal = normalize();
+        return normal.scale(normal.scalar(other));
+    }
+
+    /**
+     * This method projects this vector onto the other.
+     * @return projection of this vector onto the other vector.
+     * @since 1.1
+     */
+    public Vector projectOn(Vector other) {
+        Vector normal = other.normalize();
+        return normal.scale(normal.scalar(this));
     }
 
     @Override

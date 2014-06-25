@@ -3,10 +3,11 @@ alltiny's math-vector is a Java module providing classes for Vector and Matrix s
 ### Supported Vector Operations ###
 - determine vector's length
 - normalize vector
-- add or substract two vectors
+- add or substract two vectors from each other
 - scale vector by a scalar
 - determine scalar product of two vectors
 - determine cross product of two vectors
+- project one vector onto another (since 1.1)
 
 ### Supported Matrix Operations
 - multiply vector with the matrix

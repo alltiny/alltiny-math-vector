@@ -12,7 +12,7 @@ sourceCompatibility = 1.6
 checkstyle.configFile = file('checkstyle.xml')
 
 group = 'org.alltiny'
-version = '1.0.2'
+version = '1.1.0'
 
 repositories {
 	mavenCentral()
