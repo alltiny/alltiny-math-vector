@@ -39,6 +39,17 @@ public class Matrix {
         this.rows = rows;
     }
 
+    public Matrix add(Matrix matrix) {
+        if (getRows() != matrix.getRows() || getColumns() != matrix.getColumns()) {
+            throw new IllegalDimensionException("matrices must have same dimensions");
+        }
+        Vector[] result = new Vector[rows.length];
+        for (int row = 0; row < rows.length; row++) {
+            result[row] = rows[row].add(matrix.getRow(row));
+        }
+        return new Matrix(result);
+    }
+
     public Vector mul(Vector vector) {
         if (columns != vector.getDimension()) {
             throw new IllegalDimensionException("vector with " + vector.getDimension() + " dimensions can not be multiplied with matrix with " + columns + " columns");
@@ -50,17 +61,6 @@ public class Matrix {
             }
         }
         return new Vector(result);
-    }
-
-    public Matrix add(Matrix matrix) {
-        if (getRows() != matrix.getRows() || getColumns() != matrix.getColumns()) {
-            throw new IllegalDimensionException("matrices must have same dimensions");
-        }
-        Vector[] result = new Vector[rows.length];
-        for (int row = 0; row < rows.length; row++) {
-            result[row] = rows[row].add(matrix.getRow(row));
-        }
-        return new Matrix(result);
     }
 
     public Matrix mul(Matrix matrix) {
