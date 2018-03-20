@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/alltiny/alltiny-math-vector.svg?branch=master)](https://travis-ci.org/alltiny/alltiny-math-vector)
+[![Coverage Status](https://coveralls.io/repos/github/alltiny/alltiny-math-vector/badge.svg?branch=master)](https://coveralls.io/github/alltiny/alltiny-math-vector?branch=master)
 
 alltiny's math-vector is a Java module providing classes for Vector and Matrix supporting common operations. Both support any number of dimensions. I moved both classes into this module for better reusability. Maybe it will become handy for you too? - Let me know.
 
