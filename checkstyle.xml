@@ -24,7 +24,7 @@
             <property name="tokens" value="LITERAL_IF,LITERAL_ELSE,LITERAL_DO,LITERAL_FOR,LITERAL_WHILE"/>
         </module>
         <module name="RightCurly"/>
-        <!-- nested block are necessary to define namespaces.
+        <!-- nested block are necessary to define namespaces (aka scopes).
         <module name="AvoidNestedBlocks"/> -->
 
         <!-- Class design -->
@@ -78,7 +78,7 @@
         <!-- Imports -->
         <!-- with usage of modern IDEs star imports are no longer a problem of intransparency. So we allow them.
         <module name="AvoidStarImport"/>-->
-        <!-- Sun adives to use static imports VERY SPARINGLY. We don't want them in our code. -->
+        <!-- Sun advices to use static imports VERY SPARINGLY. We don't want them in our code. -->
         <module name="AvoidStaticImport"/>
         <module name="IllegalImport"/>
         <module name="RedundantImport"/>
