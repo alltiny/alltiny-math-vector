@@ -51,4 +51,52 @@ public class MatrixTest {
         Assert.assertEquals("column should be", new Vector(1,3), m.getColumn(0));
         Assert.assertEquals("column should be", new Vector(2,4), m.getColumn(1));
     }
+
+    @Test
+    public void testSingleValueExtraction() {
+        Matrix m = new Matrix(new Vector(1,2), new Vector(3,4));
+        Assert.assertEquals("value on (0,0) should be", 1d, m.get(0,0));
+        Assert.assertEquals("value on (0,1) should be", 2d, m.get(0,1));
+        Assert.assertEquals("value on (1,0) should be", 3d, m.get(1,0));
+        Assert.assertEquals("value on (1,0) should be", 4d, m.get(1,1));
+    }
+
+    @Test
+    public void testAddingTwoMatrices() {
+        Matrix m1 = new Matrix(new Vector(1,2), new Vector(3,4));
+        Matrix m2 = new Matrix(new Vector(5,6), new Vector(7,8));
+        Matrix m = m1.add(m2);
+        Assert.assertEquals("value on (0,0) should be", 6d, m.get(0,0));
+        Assert.assertEquals("value on (0,1) should be", 8d, m.get(0,1));
+        Assert.assertEquals("value on (1,0) should be", 10d, m.get(1,0));
+        Assert.assertEquals("value on (1,0) should be", 12d, m.get(1,1));
+    }
+
+    @Test(expected = IllegalDimensionException.class)
+    public void testAddingMatricesWithDifferentRowDimensions() {
+        new Matrix(new Vector(1,2), new Vector(3,4)).add(new Matrix(new Vector(5,6)));
+    }
+
+    @Test(expected = IllegalDimensionException.class)
+    public void testAddingMatricesWithDifferentColumnDimensions() {
+        new Matrix(new Vector(1,2), new Vector(3,4)).add(new Matrix(new Vector(5d), new Vector(6d)));
+    }
+
+    @Test
+    public void testMultiplyingTwoMatrices() {
+        Matrix a = new Matrix(new Vector(3,2,1), new Vector(1,0,2));
+        Matrix b = new Matrix(new Vector(1,2), new Vector(0,1), new Vector(4,0));
+        Matrix m = a.mul(b);
+        Assert.assertEquals("value on (0,0) should be", 7d, m.get(0,0));
+        Assert.assertEquals("value on (0,1) should be", 8d, m.get(0,1));
+        Assert.assertEquals("value on (1,0) should be", 9d, m.get(1,0));
+        Assert.assertEquals("value on (1,0) should be", 2d, m.get(1,1));
+    }
+
+    @Test(expected = IllegalDimensionException.class)
+    public void testMultiplyingMatricesWithWrongDimensions() {
+        Matrix a = new Matrix(new Vector(1,2,3), new Vector(4,5,6), new Vector(7,8,9));
+        Matrix b = new Matrix(new Vector(1,2), new Vector(0,1));
+        a.mul(b);
+    }
 }

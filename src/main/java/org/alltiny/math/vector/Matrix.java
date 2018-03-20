@@ -69,11 +69,12 @@ public class Matrix {
         }
         Vector[] result = new Vector[getRows()];
         for (int row = 0; row < getRows(); row++) {
-            double[] rowVector = new double[matrix.getColumns()];
+            final Vector rowVector = getRow(row);
+            final double[] resultRowVector = new double[matrix.getColumns()];
             for (int col = 0; col < matrix.getColumns(); col++) {
-                rowVector[col] = getRow(row).scalar(matrix.getColumn(col));
+                resultRowVector[col] = rowVector.scalar(matrix.getColumn(col));
             }
-            result[row] = new Vector(rowVector);
+            result[row] = new Vector(resultRowVector);
         }
         return new Matrix(result);
     }
@@ -86,12 +87,16 @@ public class Matrix {
         return columns;
     }
 
+    public double get(final int row, final int column) {
+        return getRow(row).get(column);
+    }
+
     public Vector getRow(int index) {
         return rows[index];
     }
 
     public Vector getColumn(int index) {
-        double[] column = new double[columns];
+        double[] column = new double[rows.length];
         for (int row = 0; row < rows.length; row++) {
             column[row] = rows[row].get(index);
         }
