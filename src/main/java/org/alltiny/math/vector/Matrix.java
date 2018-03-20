@@ -11,18 +11,31 @@ public class Matrix {
     private final int columns;
 
     public Matrix(Vector... rows) {
+        if (rows == null) {
+            throw new IllegalArgumentException("vector rows can not be null");
+        }
         if (rows.length == 0) {
             throw new IllegalDimensionException("matrix should have at least one row");
         }
-        columns = rows[0].getDimension();
-        if (columns == 0) {
-            throw new IllegalDimensionException("matrix should have at least one column");
+        if (rows[0] == null) {
+            throw new IllegalArgumentException("vectors can not be null");
         }
+
+        int detectedColumns = 0;
         for (Vector row : rows) {
-            if (columns != row.getDimension()) {
+            if (row == null) {
+                throw new IllegalArgumentException("vectors can not be null");
+            }
+            if (detectedColumns == 0) {
+                detectedColumns = row.getDimension();
+            } else if (detectedColumns != row.getDimension()) {
                 throw new IllegalDimensionException("all row vectors must have identical dimensions");
             }
         }
+        if (detectedColumns == 0) {
+            throw new IllegalDimensionException("matrix should have at least one column");
+        }
+        columns = detectedColumns;
         this.rows = rows;
     }
 

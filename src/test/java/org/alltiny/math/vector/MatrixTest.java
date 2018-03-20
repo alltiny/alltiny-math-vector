@@ -8,6 +8,36 @@ import org.junit.Test;
  */
 public class MatrixTest {
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testMatrixRejectsNull() {
+        new Matrix((Vector[])null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testMatrixRejectsEmptyVectorArray() {
+        new Matrix();
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testMatrixRejectsNullVectors() {
+        new Matrix(new Vector[]{null});
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testMatrixRejectsNullVectorsInArray() {
+        new Matrix(new Vector(1), null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testMatrixRejectsVectorsWithDifferentLength() {
+        new Matrix(new Vector(1), new Vector(1, 2));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testMatrixRejectsVectorsWithZeroElements() {
+        new Matrix(new Vector());
+    }
+
     @Test
     public void testRowExtraction() {
         Matrix m = new Matrix(new Vector(1,2), new Vector(3,4));
