@@ -8,8 +8,4 @@ public class IllegalDimensionException extends IllegalArgumentException {
     public IllegalDimensionException(String s) {
         super(s);
     }
-
-    public IllegalDimensionException(String message, Throwable cause) {
-        super(message, cause);
-    }
 }
