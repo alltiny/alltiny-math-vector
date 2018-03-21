@@ -101,6 +101,22 @@ public class MatrixTest {
     }
 
     @Test
+    public void testMultiplyingMatrixWithVector() {
+        Matrix a = new Matrix(new Vector(3,2,1), new Vector(1,0,2));
+        Vector v = a.mul(new Vector(3,4,5));
+        Assert.assertNotNull("vector should not be null", v);
+        Assert.assertEquals("dimension of vector should be", 2, v.getDimension());
+        Assert.assertEquals("value for x should be", 22d, v.get(0));
+        Assert.assertEquals("value for y should be", 13d, v.get(1));
+    }
+
+    @Test(expected = IllegalDimensionException.class)
+    public void testMultiplyingMatrixAndVectorWithWrongDimensions() {
+        new Matrix(new Vector(3,2,1), new Vector(7,6,5)).mul(new Vector(2,3));
+    }
+
+
+    @Test
     public void testTransposingMatrix() {
         Matrix a = new Matrix(new Vector(3,2,1), new Vector(1,0,2));
         Matrix m = a.transpose();
