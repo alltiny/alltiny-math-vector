@@ -101,6 +101,18 @@ public class MatrixTest {
     }
 
     @Test
+    public void testTransposingMatrix() {
+        Matrix a = new Matrix(new Vector(3,2,1), new Vector(1,0,2));
+        Matrix m = a.transpose();
+        Assert.assertEquals("value a(0,0) should be m(0,0)", a.get(0,0), m.get(0,0));
+        Assert.assertEquals("value a(0,1) should be m(1,0)", a.get(0,0), m.get(0,0));
+        Assert.assertEquals("value a(0,2) should be m(2,0)", a.get(0,0), m.get(0,0));
+        Assert.assertEquals("value a(1,0) should be m(0,1)", a.get(0,0), m.get(0,0));
+        Assert.assertEquals("value a(1,1) should be m(1,1)", a.get(0,0), m.get(0,0));
+        Assert.assertEquals("value a(1,2) should be m(2,1)", a.get(0,0), m.get(0,0));
+    }
+
+    @Test
     public void testMatricesWithPositiveZeroAndNegativeZeroEqual() {
         Assert.assertEquals("Matrices with positive zero and negative zero equal each other", new Matrix(new Vector(0,1)), new Matrix(new Vector(-0d,1)));
         Assert.assertTrue("Matrices with positive zero and negative zero produce the same hash", new Matrix(new Vector(0,1)).equals(new Matrix(new Vector(-0d,1))));

@@ -79,6 +79,14 @@ public class Matrix {
         return new Matrix(result);
     }
 
+    public Matrix transpose() {
+        Vector[] result = new Vector[getColumns()];
+        for (int column = 0; column < getColumns(); column++) {
+            result[column] = getColumn(column);
+        }
+        return new Matrix(result);
+    }
+
     public int getRows() {
         return rows.length;
     }
