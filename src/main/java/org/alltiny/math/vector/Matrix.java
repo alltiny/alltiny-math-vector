@@ -65,7 +65,7 @@ public class Matrix {
 
     public Matrix mul(Matrix matrix) {
         if (getColumns() != matrix.getRows()) {
-            throw new IllegalDimensionException("matrix with " + getColumns() + " column can not be multiplied to matrix with " + matrix.getRows() + " rows");
+            throw new IllegalDimensionException("matrix with " + getColumns() + " columns can not be multiplied to matrix with " + matrix.getRows() + " rows");
         }
         Vector[] result = new Vector[getRows()];
         for (int row = 0; row < getRows(); row++) {
