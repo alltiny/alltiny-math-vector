@@ -99,4 +99,31 @@ public class MatrixTest {
         Matrix b = new Matrix(new Vector(1,2), new Vector(0,1));
         a.mul(b);
     }
+
+    @Test
+    public void testMatricesWithPositiveZeroAndNegativeZeroEqual() {
+        Assert.assertEquals("Matrices with positive zero and negative zero equal each other", new Matrix(new Vector(0,1)), new Matrix(new Vector(-0d,1)));
+        Assert.assertTrue("Matrices with positive zero and negative zero produce the same hash", new Matrix(new Vector(0,1)).equals(new Matrix(new Vector(-0d,1))));
+    }
+
+    @Test
+    public void testMatrixEqualsWithSameMatrix() {
+        Matrix m = new Matrix(new Vector(1,5),new Vector(2,6));
+        Assert.assertTrue("Matrices should equal itself", m.equals(m));
+    }
+
+    @Test
+    public void testMatrixNotEqualsString() {
+        Assert.assertFalse("Matrices should equal itself", new Matrix(new Vector(7,3),new Vector(8,4)).equals("foobar"));
+    }
+
+    @Test
+    public void testMatricesWithZeroAndNegativeZeroCreateTheSameHash() {
+        Assert.assertEquals("Matrices with positive zero and negative zero produce the same hash", new Matrix(new Vector(0,1)).hashCode(), new Matrix(new Vector(-0d,1)).hashCode());
+    }
+
+    @Test
+    public void testToString() {
+        Assert.assertEquals("toString should be", "Matrix[Vector[7.0, 3.0], Vector[8.0, 4.0]]", new Matrix(new Vector(7,3),new Vector(8,4)).toString());
+    }
 }
