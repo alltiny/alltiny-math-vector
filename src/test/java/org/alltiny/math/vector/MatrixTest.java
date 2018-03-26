@@ -1,6 +1,6 @@
 package org.alltiny.math.vector;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -55,10 +55,10 @@ public class MatrixTest {
     @Test
     public void testSingleValueExtraction() {
         Matrix m = new Matrix(new Vector(1,2), new Vector(3,4));
-        Assert.assertEquals("value on (0,0) should be", 1d, m.get(0,0));
-        Assert.assertEquals("value on (0,1) should be", 2d, m.get(0,1));
-        Assert.assertEquals("value on (1,0) should be", 3d, m.get(1,0));
-        Assert.assertEquals("value on (1,0) should be", 4d, m.get(1,1));
+        Assert.assertEquals("value on (0,0) should be", 1d, m.get(0,0), 0.000001);
+        Assert.assertEquals("value on (0,1) should be", 2d, m.get(0,1), 0.000001);
+        Assert.assertEquals("value on (1,0) should be", 3d, m.get(1,0), 0.000001);
+        Assert.assertEquals("value on (1,0) should be", 4d, m.get(1,1), 0.000001);
     }
 
     @Test
@@ -66,10 +66,10 @@ public class MatrixTest {
         Matrix m1 = new Matrix(new Vector(1,2), new Vector(3,4));
         Matrix m2 = new Matrix(new Vector(5,6), new Vector(7,8));
         Matrix m = m1.add(m2);
-        Assert.assertEquals("value on (0,0) should be", 6d, m.get(0,0));
-        Assert.assertEquals("value on (0,1) should be", 8d, m.get(0,1));
-        Assert.assertEquals("value on (1,0) should be", 10d, m.get(1,0));
-        Assert.assertEquals("value on (1,0) should be", 12d, m.get(1,1));
+        Assert.assertEquals("value on (0,0) should be", 6d, m.get(0,0), 0.000001);
+        Assert.assertEquals("value on (0,1) should be", 8d, m.get(0,1), 0.000001);
+        Assert.assertEquals("value on (1,0) should be", 10d, m.get(1,0), 0.000001);
+        Assert.assertEquals("value on (1,0) should be", 12d, m.get(1,1), 0.000001);
     }
 
     @Test(expected = IllegalDimensionException.class)
@@ -87,10 +87,10 @@ public class MatrixTest {
         Matrix a = new Matrix(new Vector(3,2,1), new Vector(1,0,2));
         Matrix b = new Matrix(new Vector(1,2), new Vector(0,1), new Vector(4,0));
         Matrix m = a.mul(b);
-        Assert.assertEquals("value on (0,0) should be", 7d, m.get(0,0));
-        Assert.assertEquals("value on (0,1) should be", 8d, m.get(0,1));
-        Assert.assertEquals("value on (1,0) should be", 9d, m.get(1,0));
-        Assert.assertEquals("value on (1,0) should be", 2d, m.get(1,1));
+        Assert.assertEquals("value on (0,0) should be", 7d, m.get(0,0), 0.000001);
+        Assert.assertEquals("value on (0,1) should be", 8d, m.get(0,1), 0.000001);
+        Assert.assertEquals("value on (1,0) should be", 9d, m.get(1,0), 0.000001);
+        Assert.assertEquals("value on (1,0) should be", 2d, m.get(1,1), 0.000001);
     }
 
     @Test(expected = IllegalDimensionException.class)
@@ -106,8 +106,8 @@ public class MatrixTest {
         Vector v = a.mul(new Vector(3,4,5));
         Assert.assertNotNull("vector should not be null", v);
         Assert.assertEquals("dimension of vector should be", 2, v.getDimension());
-        Assert.assertEquals("value for x should be", 22d, v.get(0));
-        Assert.assertEquals("value for y should be", 13d, v.get(1));
+        Assert.assertEquals("value for x should be", 22d, v.get(0), 0.000001);
+        Assert.assertEquals("value for y should be", 13d, v.get(1), 0.000001);
     }
 
     @Test(expected = IllegalDimensionException.class)
@@ -120,12 +120,12 @@ public class MatrixTest {
     public void testTransposingMatrix() {
         Matrix a = new Matrix(new Vector(3,2,1), new Vector(1,0,2));
         Matrix m = a.transpose();
-        Assert.assertEquals("value a(0,0) should be m(0,0)", a.get(0,0), m.get(0,0));
-        Assert.assertEquals("value a(0,1) should be m(1,0)", a.get(0,0), m.get(0,0));
-        Assert.assertEquals("value a(0,2) should be m(2,0)", a.get(0,0), m.get(0,0));
-        Assert.assertEquals("value a(1,0) should be m(0,1)", a.get(0,0), m.get(0,0));
-        Assert.assertEquals("value a(1,1) should be m(1,1)", a.get(0,0), m.get(0,0));
-        Assert.assertEquals("value a(1,2) should be m(2,1)", a.get(0,0), m.get(0,0));
+        Assert.assertEquals("value a(0,0) should be m(0,0)", a.get(0,0), m.get(0,0), 0.000001);
+        Assert.assertEquals("value a(0,1) should be m(1,0)", a.get(0,0), m.get(0,0), 0.000001);
+        Assert.assertEquals("value a(0,2) should be m(2,0)", a.get(0,0), m.get(0,0), 0.000001);
+        Assert.assertEquals("value a(1,0) should be m(0,1)", a.get(0,0), m.get(0,0), 0.000001);
+        Assert.assertEquals("value a(1,1) should be m(1,1)", a.get(0,0), m.get(0,0), 0.000001);
+        Assert.assertEquals("value a(1,2) should be m(2,1)", a.get(0,0), m.get(0,0), 0.000001);
     }
 
     @Test
