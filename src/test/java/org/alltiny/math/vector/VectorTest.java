@@ -193,4 +193,14 @@ public class VectorTest {
         Assert.assertNotSame(original, copy);
         Assert.assertEquals("Both vectors should be equal", original, copy);
     }
+
+    @Test
+    public void testCopyConstructorDoesNotReferenceOriginal() {
+        Vector original = new Vector(9,8,7);
+        Vector copy = new Vector(original);
+        Assert.assertEquals("x value on copy should be", 9, copy.get(0), 0.000001);
+        copy.set(0, 6); // alter the x on the copy
+        Assert.assertEquals("x value on copy should be", 6, copy.get(0), 0.000001);
+        Assert.assertEquals("x value on original should be unchanged", 9, original.get(0), 0.000001);
+    }
 }
