@@ -13,7 +13,7 @@ description = 'Library offering vectors and matrices'
 compileJava.options.encoding = 'UTF-8'
 compileTestJava.options.encoding = 'UTF-8'
 
-sourceCompatibility = 1.6
+sourceCompatibility = 1.8
 
 checkstyle.configFile = file('checkstyle.xml')
 
