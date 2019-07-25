@@ -1,23 +1,14 @@
-description = 'Library offering vectors and matrices'
-
-buildscript {
-	repositories {
-		maven {
-			url 'https://plugins.gradle.org/m2/'
-		}
-	}
-	dependencies {
-		classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.8.4'
-	}
+plugins {
+	id 'java'
+	id 'idea'
+	id 'eclipse'
+	id 'checkstyle'
+	id 'jacoco'
+	id 'com.github.kt3k.coveralls' version '2.8.4'
+	id 'maven-publish'
 }
 
-apply plugin: 'java'
-apply plugin: 'idea'
-apply plugin: 'eclipse'
-apply plugin: 'checkstyle'
-apply plugin: 'jacoco'
-apply plugin: 'com.github.kt3k.coveralls'
-apply plugin: 'maven-publish'
+description = 'Library offering vectors and matrices'
 
 compileJava.options.encoding = 'UTF-8'
 compileTestJava.options.encoding = 'UTF-8'
